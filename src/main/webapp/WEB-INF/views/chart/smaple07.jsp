@@ -13,7 +13,7 @@
 	
 </style>
 <body>
-	<div id="chartDiv07" style="height:200xp;width:400px; border:solid 1px black;">
+	<div id="chartDiv07" style="width:400px; border:solid 1px black;">
 	
 		
 	</div>
@@ -41,7 +41,8 @@
 	};
 
 	
-	$('#chartDiv07').html('<canvas id="myChart07"></canvas>');	
+	$('#chartDiv07').html('<canvas id="myChart07" style="height:50px; width:400px;"></canvas>');	
+	
 	var ctx = document.getElementById("myChart07").getContext('2d');	
 	new Chart(ctx, {
 		type : "bar",
@@ -78,11 +79,14 @@
 					//,categoryPercentage: 1.0
 		            //,barPercentage: 1.0
 				}
-			}
+			}			
 			,plugins: {
 				legend: {
 					display: false
 				}
+				,tooltip :{ 
+					enabled: false
+				} 
 		    }
 			,categoryPercentage: 1.0
 			,barPercentage : 1.0
