@@ -11,9 +11,9 @@
 <body>
 	<table>
 		<tr>
-			<th>smaple01</th>
-			<th>smaple02</th>
-			<th>smaple03</th>
+			<th><a href='/chart/smaple01'>smaple01</a></th>
+			<th><a href='/chart/smaple02'>smaple02</a></th>
+			<th><a href='/chart/smaple03'>smaple03</a></th>
 		</tr>
 		<tr>
 			<td><c:import url="/chart/smaple01"/></td>
@@ -22,14 +22,24 @@
 		</tr>
 		
 		<tr>
-			<th>smaple04</th>
-			<th>smaple05</th>
-			<th>smaple06</th>
+			<th><a href='/chart/smaple04'>smaple04</a></th>
+			<th><a href='/chart/smaple05'>smaple05</a></th>
+			<th><a href='/chart/smaple06'>smaple06</a></th>
 		</tr>
 		<tr>
 			<td><c:import url="/chart/smaple04"/></td>
 			<td><c:import url="/chart/smaple05"/></td>
 			<td><c:import url="/chart/smaple06"/></td>
+		</tr>
+		<tr>
+			<th><a href='/chart/smaple07'>smaple07</a></th>
+			<th></th>
+			<th></th>
+		</tr>
+		<tr>
+			<td><c:import url="/chart/smaple07"/></td>
+			<td></td>
+			<td></td>
 		</tr>
 	</table>
 
