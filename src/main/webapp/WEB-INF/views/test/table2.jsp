@@ -231,7 +231,7 @@
 		//td만큼 생성 background 이미지 생성
 		for(var i=0;i<centerCnt;i++){
 			backgroundImageCenter += "url('../img/ship_2.png'),";
-			backgroundSizeCenter += (tdWidth+1)+"px 200px,";// +1 이미지 공백 방지
+			backgroundSizeCenter += (tdWidth+1)+"px 200px,";// +1px 이미지 공백 방지
 			backgroundPositionCenter += centerPosition+"px 0px,";
 			centerPosition += tdWidth;
 		}

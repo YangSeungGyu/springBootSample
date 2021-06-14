@@ -7,7 +7,7 @@
 	<script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>	
 	<style>
 		.tbDiv {
-			height: 100px;width: 1200px;
+			height: 100px;
 			font-size: 12px;
 		}
 		.mainTb td  {			
@@ -34,9 +34,18 @@
 		}
 		.subTitleDiv {
 			float:left;
-			height: 25px;
+			height: 100%;
 			line-height: 25px;
 			width:60px;			
+			margin-right: 50px;			
+			vertical-align: middle;
+			text-align : center;
+			font-size: 12px;
+		}
+		.subTitle {
+			height: 25px;
+			line-height: 25px;
+			width:100%;			
 			margin-right: 50px;			
 			vertical-align: middle;
 			text-align : center;
@@ -45,6 +54,7 @@
 		
 		.planDiv{
 			width : 1400px;
+			border : solid 1px black;
 		}
 	</style>
 	<title>Insert title here</title>
@@ -53,7 +63,9 @@
 <body>
 	<div id="planDiv" class="planDiv">
 		<div id="dsDeckSubTitle" class="subTitleDiv ds">
+			<div>
 				DS-DECK
+			</div>
 		</div>
 		<div id="tbDiv" class="tbDiv">
 			<table id="tb1" class="mainTb"></table>
@@ -99,6 +111,8 @@
 				,{topTd:115,btmTd01:23,btmTd02:555}
 				,{topTd:115,btmTd01:23,btmTd02:555}
 				,{topTd:115,btmTd01:23,btmTd02:555}
+				,{topTd:115,btmTd01:23,btmTd02:555}
+		
 				
 			]
 			,hidePoint:4
@@ -157,6 +171,7 @@
 		var dbCnt = 0;
 		for(var i=0 ; i<tdCnt ; i++){
 			var td = $("<td></td>");
+			td.attr('id',tdId+"_"+i);
 			
 			if(i != hidePoint){
 				var innerTb =$("<table class='innerTb'><tr></tr><tr></tr></table>");
@@ -206,12 +221,12 @@
 		var centerCnt = listCnt-1; // -1 = listCnt - 2(첫번째,마지막td) + 1(히든)
 		var firstImgSize = 120;//이미지 사이즈 확인 후 적용
 		var lastImgSize = 120;//이미지 사이즈 확인 후 적용
+		var tbBorderSpace = Number($("#tb1").css("border-spacing").split("px")[0]); //테이블 td간격
 		
-		//center background image Td사이즈
-		var tdWidth = $("#main02TdTop_0").outerWidth(true)+1.5; //table space 값 및 기타 오류값
+		
 		
 		//이미지 시작위치 div+첫번째 td
-		var firstPosition = ($("#dsDeckSubTitle").outerWidth(true)+tdWidth)+2;
+		var firstPosition = ($("#dsDeckSubTitle").outerWidth(true)+$("#main01Td_0").outerWidth(true))+tbBorderSpace;
 		var centerPosition = (firstPosition); //center,last background 이미지 적용 증가값
 		
 		//첫번째 background이미지 속성
@@ -226,10 +241,12 @@
 		
 		//td만큼 생성 background 이미지 생성
 		for(var i=0;i<centerCnt;i++){
+			let centerTdWidth = $("#main01Td_"+(i+1)).outerWidth(true)+tbBorderSpace;
+			
 			backgroundImageCenter += "url('../img/ship_2.png'),";
-			backgroundSizeCenter += (tdWidth+1)+"px 200px,";// +1 이미지 공백 방지
+			backgroundSizeCenter += (centerTdWidth+1)+"px 200px,";
 			backgroundPositionCenter += centerPosition+"px 0px,";
-			centerPosition += tdWidth;
+			centerPosition += centerTdWidth;
 		}
 		
 		//마지막 background이미지 속성
