@@ -38,6 +38,8 @@
 		borderWidth : 2,
 		pointStyle : 'rectRot',
 		data : [ 5, 8 ]
+		
+		
 	};
 
 	
@@ -87,6 +89,26 @@
 				,tooltip :{ 
 					enabled: false
 				} 
+				,datalabels : {
+					color: 'black'
+					,display : true
+					,font : {
+						weight: 'bold'
+					}
+					,formatter: (value, ctx) => {
+				        let datasets = ctx.chart.data.datasets;
+				        if (datasets.indexOf(ctx.dataset) === datasets.length - 1) {
+				            let sum = 0;
+				            datasets.map(dataset => {
+				                sum += dataset.data[ctx.dataIndex];
+				            });
+				            let percentage = Math.round((value / sum) * 100) + '%';
+				            return percentage;
+				        } else {
+				            return percentage;
+				        }
+				    }
+				}
 		    }
 			,categoryPercentage: 1.0
 			,barPercentage : 1.0

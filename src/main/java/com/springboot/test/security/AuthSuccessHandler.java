@@ -29,23 +29,23 @@ public class AuthSuccessHandler extends SimpleUrlAuthenticationSuccessHandler{
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response,
             Authentication authentication) throws ServletException, IOException {
 	 	HttpSession session = request.getSession();
-		session.invalidate();
-		HttpSession newSession = request.getSession(true);
 		response.setStatus(HttpServletResponse.SC_OK);
 		Result result = null;
 	 	
         User user = (User)authentication.getPrincipal();
-        newSession.setAttribute("userId", user.getUserId());
+        session.setAttribute("userId", user.getUserId());
         
         result = new Result("200", "성공");
 	
 		//한쪽으로 통일해야함.
-		newSession.setAttribute("userName", user.getUserId());
-		newSession.setMaxInactiveInterval(60*30);
+        session.setAttribute("userName", user.getUserId());
+        session.setMaxInactiveInterval(60*30);
 		
 		//User 정보에서 필수 UserInfo로 변경
 		UsernamePasswordAuthenticationToken newAuth = new UsernamePasswordAuthenticationToken(user.getUserId(), authentication.getCredentials(), authentication.getAuthorities());
         SecurityContextHolder.getContext().setAuthentication(newAuth);
+        
+        //CustomUserDetails customUserDetails = new CustomUserDetails(); 로그인 중복방지 시 VO셋팅
         
 		 response.setContentType("Application/json; charset=UTF-8");
 		 response.setStatus(HttpServletResponse.SC_OK);
