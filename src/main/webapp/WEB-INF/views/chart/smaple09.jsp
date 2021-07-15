@@ -10,40 +10,37 @@
 	<title>Insert title here</title>
 </head>
 <body>
-	<div id="chartDiv07" style="width:400px; border:solid 1px black;">
-	
-		
+	<div id="chartDiv09" style="width:400px;  border:solid 1px black; position:relative;">	
 	</div>
 	
 </body>
 <script type="text/javascript">
-	var chartMap07 = {
-		test1: {label:'테스트1',color:'#F29661'}
-		,test2: {label:'테스트2',color:'#BDBDBD'}
+	var chartMap09 = {
+		test1: {label:'테스트1',color:'#002266'}
+		,test2: {label:'테스트2',color:'#4374D9'}
 	};
 
-	var test1DataSet = {
-		
-		label : chartMap07['test1'].label,
-		 backgroundColor: chartMap07['test1'].color,
-		data : [ 10, 5]
+	var test1DataSet = {				
+		 backgroundColor: chartMap09['test1'].color,
+		borderWidth : 0,
+		data : [10]
 	};
 	
-	var test2DataSet = {
-		label : chartMap07['test2'].label,
-		backgroundColor: chartMap07['test2'].color,
-		data : [ 5, 8 ]
+	var test2DataSet = {		
+		backgroundColor: chartMap09['test2'].color,
+		borderWidth : 0,
+		data : [5]		
 	};
 
 	
-	$('#chartDiv07').html('<canvas id="myChart07" style="height:50px; width:400px;"></canvas>');	
+	$('#chartDiv09').html('<canvas id="myChart09" style="height:50px; width:400px;"></canvas>');	
 	
-	var ctx = document.getElementById("myChart07").getContext('2d');	
+	var ctx = document.getElementById("myChart09").getContext('2d');	
 	new Chart(ctx, {
 		type : "horizontalBar",
 		data : {
 			display: true,
-			labels : ['test1','test2'],
+			labels : ['test1'],
 			datasets : [test1DataSet, test2DataSet]
 		},
 		options : {		
@@ -54,13 +51,15 @@
 					,stacked: true
 					,categoryPercentage: 1.0
 					,barPercentage : 1.0
+					
 				}]
 				,xAxes:[{
-					display : false					
+					display : false
 					,stacked: true
 					,ticks:{
 						beginAtZero : true
 					}
+
 				}]
 			}
 			,animation: {
@@ -71,18 +70,8 @@
 					ctx.textAlign = 'center';
 					ctx.textBaseline = 'bottom';
 					ctx.fillStyle = 'white';
-
-					this.data.datasets.forEach(function(dataset, i){						
-						let meta = chartInstance.controller.getDatasetMeta(i);
-						let bfMeta = (i==0) ? null: chartInstance.controller.getDatasetMeta(i-1);
-						//console.log(meta);						
-						meta.data.forEach(function(bar, index) {
-							let data = dataset.data[index];
-							let left = (bfMeta == null) ? 0 : bfMeta.data[index]._model.x;
-							ctx.fillText(data,left+15  , bar._model.y + 5);
-							
-						});
-					});
+					ctx.font = '20px '+ this.options.defaultFontStyle;
+					ctx.fillText('15% -> 20%',65 , 35);
 				}
 			}
 			,hover: {
@@ -92,14 +81,15 @@
 			,legend: {
 				display: false
 			}
-			,tooltips:{ 
+			,tooltips :{ 
 				enabled: false
-			} 
+			}
 			
 		}
 	});
-	//ctx.fontStyle = "red";
-	//ctx.fillText("10% ->30%",5,10);
+	
+	//$("#chartDiv09").append('<p style="color:white; margin:0px; position:absolute; top:50%; left:5px;transform:translateY(-50%);">10% -> 50%</p>');
+
 </script>
 
 

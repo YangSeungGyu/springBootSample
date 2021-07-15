@@ -5,13 +5,10 @@
 <head>
 	<meta charset="UTF-8">
 	<script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
-	<script type="text/javascript" src="../chart.js-3.1.0/package/dist/chart.js"></script>		
+	<script type="text/javascript" src="/chart.js-2.9.4/Chart.bundle.min.js"></script>
+	<script type="text/javascript" src="/chart.js-2.9.4/Chart.min.js"></script>	
 	<title>Insert title here</title>
 </head>
-<style>
-	.testLgend{background-image: url(../img/test_legend.png)}
-	
-</style>
 <body>
 
 	<div id="chartDiv02" style="height:200xp;width:400px;">
@@ -20,24 +17,31 @@
 	
 </body>
 <script type="text/javascript">
-
+	var chartMap02 = {
+		test1: {label:'테스트1',color:'#F29661',style:'rect'}
+		,test2: {label:'테스트2',color:'#6799FF',style:'rectRot'}
+	};
+	
 	var test1DataSet = {
 		
-		label : 'test1',
-		borderColor : '#FF0000',
-		 backgroundColor: "#FF0000",
+		label : chartMap02['test1'].label,
+		borderColor : chartMap02['test1'].color,
+		 backgroundColor: chartMap02['test1'].color,
 		borderWidth : 2,
-		pointStyle : 'rect',
+		fill: false,
+		lineTension: 0,
+		pointStyle : chartMap02['test1'].style,
 		data : [ 10, 5, 3, 3 ]
 	};
 	
 	var test2DataSet = {
-		
-		label : 'test2',
-		borderColor : '#FFE400',
-		backgroundColor: "#FFE400",
+		label : chartMap02['test2'].label,
+		borderColor : chartMap02['test2'].color,
+		backgroundColor: chartMap02['test2'].color,
 		borderWidth : 2,
-		pointStyle : 'rectRot',
+		fill: false,
+		lineTension: 0,
+		pointStyle : chartMap02['test2'].style,
 		data : [ 5, 8, 2, 2 ]
 	};
 
@@ -54,21 +58,20 @@
 		options : {				
 			responsive: false
 			,scales : {
-				y :  {
-					beginAtZero : true
-				} 
+				yAxes : [{					
+					ticks: {
+						beginAtZero: true,
+					}
+				}]
 			}
-			,plugins: {
-				legend: {
-					display: true,
-					 useLineStyle: true,
-					usePointStyle: true,
-					position : 'bottom'
-					
-				}
-			      
-		    }
+			,legend: {
+				display: true,
+				useLineStyle: true,
+				usePointStyle: true,
+				position : 'bottom'
+			}
 		}
+		
 	});
 </script>
 

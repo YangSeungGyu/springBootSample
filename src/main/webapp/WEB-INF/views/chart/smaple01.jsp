@@ -5,12 +5,11 @@
 <head>
 	<meta charset="UTF-8">
 	<script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
-	<script type="text/javascript" src="../chart.js-3.1.0/package/dist/chart.min.js"></script>		
+	<script type="text/javascript" src="/chart.js-2.9.4/Chart.bundle.min.js"></script>
+	<script type="text/javascript" src="/chart.js-2.9.4/Chart.min.js"></script>			
 	<title>Insert title here</title>
 </head>
 <body>
-sdfsdf
-
 	<canvas id="myChart01"></canvas>
 </body>
 <script type="text/javascript">

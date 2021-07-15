@@ -33,13 +33,13 @@
 		</tr>
 		<tr>
 			<th><a href='/chart/smaple07'>smaple07</a></th>
-			<th></th>
-			<th></th>
+			<th><a href='/chart/smaple08'>smaple08</a></th>
+			<th><a href='/chart/smaple09'>smaple09</a></th>
 		</tr>
 		<tr>
 			<td><c:import url="/chart/smaple07"/></td>
-			<td></td>
-			<td></td>
+			<td><c:import url="/chart/smaple08"/></td>
+			<td><c:import url="/chart/smaple09"/></td>
 		</tr>
 	</table>
 
