@@ -61,9 +61,16 @@
 				yAxes : [{
 					ticks: {
 						beginAtZero: true
+						,stepSize: 10
+						,suggestedMax : 50
 					}
 				}] 
 			}
+			,xAxes : [{
+				gridLines: {
+					display: false
+				}
+			}]
 			,legend: {
 				display: true,
 				useLineStyle: true,

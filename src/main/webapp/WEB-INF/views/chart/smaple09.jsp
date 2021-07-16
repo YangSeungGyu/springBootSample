@@ -66,12 +66,12 @@
 				duration: 1,
 				onComplete: function () {
 					let chartInstance = this.chart,
-					ctx = chartInstance.ctx;
-					ctx.textAlign = 'center';
-					ctx.textBaseline = 'bottom';
-					ctx.fillStyle = 'white';
-					ctx.font = '20px '+ this.options.defaultFontStyle;
-					ctx.fillText('15% -> 20%',65 , 35);
+					ctx2 = chartInstance.ctx;
+					ctx2.textAlign = 'left';
+					ctx2.textBaseline = 'bottom';
+					ctx2.fillStyle = 'white';
+					ctx2.font = '20px '+ this.options.defaultFontStyle;
+					ctx2.fillText('15% -> 20%',15 , 35);
 				}
 			}
 			,hover: {

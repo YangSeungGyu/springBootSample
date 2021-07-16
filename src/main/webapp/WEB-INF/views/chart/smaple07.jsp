@@ -10,10 +10,7 @@
 	<title>Insert title here</title>
 </head>
 <body>
-	<div id="chartDiv07" style="width:400px; border:solid 1px black;">
-	
-		
-	</div>
+	<div id="chartDiv07" style="width:400px; border:solid 1px black;"></div>
 	
 </body>
 <script type="text/javascript">
@@ -67,10 +64,9 @@
 				duration: 1,
 				onComplete: function () {
 					let chartInstance = this.chart,
-					ctx = chartInstance.ctx;
-					ctx.textAlign = 'center';
-					ctx.textBaseline = 'bottom';
-					ctx.fillStyle = 'white';
+					ctx2 = chartInstance.ctx;
+					ctx2.textAlign = 'left';
+					ctx2.textBaseline = 'bottom';
 
 					this.data.datasets.forEach(function(dataset, i){						
 						let meta = chartInstance.controller.getDatasetMeta(i);
@@ -78,9 +74,19 @@
 						//console.log(meta);						
 						meta.data.forEach(function(bar, index) {
 							let data = dataset.data[index];
-							let left = (bfMeta == null) ? 0 : bfMeta.data[index]._model.x;
-							ctx.fillText(data,left+15  , bar._model.y + 5);
-							
+							let xPosition = ((bfMeta == null) ? 0 : bfMeta.data[index]._model.x)+15;
+							let firstTx ='↗';
+							//글자 앞에
+							ctx2.fillStyle = 'red';
+							ctx2.fillText(firstTx,xPosition, bar._model.y + 5);
+							//본문
+							ctx2.fillStyle = 'white';
+							xPosition = xPosition+ctx2.measureText(firstTx).width + 5;
+							ctx2.fillText(data+'%',xPosition, bar._model.y + 5);
+							//글자 뒤에
+							ctx2.fillStyle = 'blue';
+							xPosition = xPosition+ctx2.measureText(data+'%').width + 5;
+							ctx2.fillText('↘',xPosition , bar._model.y + 5);
 						});
 					});
 				}
